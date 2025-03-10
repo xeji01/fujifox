@@ -8,17 +8,31 @@
 ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
 ░▒▓█▓▒░       ░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░ 
 
----------------------------------- by : xeji01 ----------------------------------- */                        
+------------------ by : xeji [https://github.com/xeji01/fujifox] -------------------
+*/
+
 
 :root {
-    --tab-font: 'JetBrainsMono Nerd Font';
-    --urlbar-font: 'JetBrainsMono Nerd Font';
+    --tab-font: 'Ndot55';
+    --urlbar-font: 'Ndot55';
+    
+/* ------------ Tab Font Size ------------ */
+#TabsToolbar, .tabbrowser-tab {
+	font-size: 15px !important;
+}
 
-    /* try increasing this if you encounter problem */
-    --urlbar-height-setting: 26px;
+/* ------------ URL Bar Font Size ------------ */ 
+#urlbar-container {
+	--urlbar-container-height: var(--urlbar-height-setting) !important;
+	font-size: 14px;
+}
+
+    /* try increasing or decreasing one of these two if you encounter overlap between tab and url bar */
+    --urlbar-height-setting: 24px;
     --tab-min-height: 30px !important;
 
     /* i don't recommend you to touch this unless you know what you're doing */
+    --tabpanel-background-color: transparent !important;
     --arrowpanel-menuitem-padding: 2px !important;
 	--arrowpanel-border-radius: 0px !important;
 	--arrowpanel-menuitem-border-radius: 0px !important;
@@ -110,7 +124,6 @@ toolbar .toolbarbutton-1 { padding: 0 0 !important; }
 	padding-top: 0 !important;
 	padding-bottom: 0 !important;
 	font-family: var(--urlbar-font, 'monospace');
-	font-size: 14px;
 }
 
 #urlbar {
@@ -276,7 +289,6 @@ personal-bookmarks, #PlacesToolbar, #PlacesToolbarItems {
 
 #TabsToolbar, .tabbrowser-tab {
 	max-height: var(--tab-min-height) !important;
-	font-size: 14px !important;
 }
 
 tab {
