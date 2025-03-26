@@ -1,0 +1,840 @@
+/*
+
+░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░▒▓█▓▒░▒▓████████▓▒░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓██████▓▒░ ░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░▒▓█▓▒░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░  
+░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░       ░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░ 
+
+------------------ by : xeji [https://github.com/xeji01/fujifox] -------------------
+*/
+
+
+:root {
+    --tab-font: 'Space Grotesk';
+    --urlbar-font: 'Space Grotesk';
+    
+/* ------------ Tab Font Size ------------ */
+#TabsToolbar, .tabbrowser-tab {
+	font-size: 15px !important;
+}
+
+/* ------------ URL Bar Font Size ------------ */ 
+#urlbar-container {
+	--urlbar-container-height: var(--urlbar-height-setting) !important;
+	font-size: 14px;
+}
+
+    /* try increasing or decreasing one of these two if you encounter overlap between tab and url bar */
+    --urlbar-height-setting: 26px;
+    --tab-min-height: 30px !important;
+
+    /* i don't recommend you to touch this unless you know what you're doing */
+    --tabpanel-background-color: transparent !important;
+    --arrowpanel-menuitem-padding: 2px !important;
+	--arrowpanel-border-radius: 0px !important;
+	--arrowpanel-menuitem-border-radius: 0px !important;
+	--toolbarbutton-border-radius: 0px !important;
+	--toolbarbutton-inner-padding: 0px 2px !important;
+	--toolbar-field-focus-background-color: var(--urlbar-focused-bg-color) !important;
+	--toolbar-field-background-color: var(--urlbar-not-focused-bg-color) !important;
+	--toolbar-field-focus-border-color: transparent !important;
+    --uc-autohide-toolbar-delay: 600ms; /* The toolbar is hidden after 0.6s */
+    --uc-toolbox-rotation: 82deg;
+
+    --bg: #00000011;
+}
+
+
+
+/* ------------------GENERAL DEBLOAT----------------------- */
+
+/* Bottom left page loading status or url preview */
+#statuspanel { display: none !important; }
+
+/* remove radius from right-click popup */
+menupopup, panel { --panel-border-radius: 0px !important; }
+menu, menuitem, menucaption { border-radius: 0px !important; }
+
+/* no stupid large buttons in right-click menu */
+menupopup > #context-navigation { display: none !important; }
+menupopup > #context-sep-navigation { display: none !important; }
+
+#main-window {
+    background: transparent !important;
+    border: 0px !important;
+}
+
+
+
+/* ------------------NAVBAR DEBLOAT------------------------ */
+
+#back-button,
+#forward-button,
+#reload-button,
+#stop-button,
+#home-button,
+#library-button {
+    display: none;
+}
+/* #fxa-toolbar-menu-button { display: none; } */
+
+/* empty space before and after the url bar */
+#customizableui-special-spring1, #customizableui-special-spring2 { display: none; }
+.private-browsing-indicator-with-label { display: none; }
+
+
+
+/* --------------------NAVBAR STYlE----------------------- */ 
+
+toolbar {
+    background: transparent !important;
+    border: 0px !important;
+}
+
+/* remove padding between toolbar buttons */
+toolbar .toolbarbutton-1 { padding: 0 0 !important; }
+
+/* add it back to the downloads button, otherwise it's too close to the urlbar */
+#downloads-button {
+	margin-left: 2px !important;
+}
+
+/* add padding to the right of the last button so that it doesn't touch the edge of the window */
+#PanelUI-menu-button {
+	padding: 0px 4px 0px 0px !important;
+}
+
+#nav-bar {
+    background: transparent !important;
+    border: 0px !important;
+}
+
+#navigator-toolbox {
+    background: transparent !important;
+    border: 0px !important;
+}
+
+#urlbar-container {
+	--urlbar-container-height: var(--urlbar-height-setting) !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	font-family: var(--urlbar-font, 'monospace');
+}
+
+#urlbar {
+	--urlbar-height: var(--urlbar-height-setting) !important;
+	--urlbar-toolbar-height: var(--urlbar-height-setting) !important;
+	min-height: var(--urlbar-height-setting) !important;
+}
+
+#urlbar-input {
+	margin-left: 0.4em !important;
+	margin-right: 0.4em !important;
+    border: none !important;
+}
+
+.urlbarView {
+	background-image: linear-gradient(to right, var(--toolbar-bgcolor), transparent) !important;
+    border: 0px !important;
+}
+
+#urlbar > #urlbar-background {
+    border: none !important;
+    box-shadow: none !important;
+}  
+
+hbox#urlbar[open="true"] hbox=#urlbar-background,
+#urlbar-background {
+    background: #000000E0 !important;
+    border: 0px !important;
+}
+
+/* keep pop-up menus from overlapping with navbar */
+#widget-overflow { margin: 4px !important; }
+#customizationui-widget-panel { margin: 4px !important; }
+#unified-extensions-panel { margin-top: 4px !important; }
+#appMenu-popup { margin-top: 4px !important; }
+
+/* Move findbar to the top left */
+findbar{
+  order: -1;
+  margin-bottom: -33px;
+  position: relative;
+  border-top: none !important;
+  padding: 0 !important;
+  transition: transform 82ms linear, opacity 82ms linear 32ms !important;
+  background: none !important;
+  pointer-events: none;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.findbar-container > .findbar-find-fast{
+  padding: var(--toolbarbutton-inner-padding) 1px;
+  margin: 0 !important;
+}
+
+findbar[hidden]{ transform: translateY(-30px);}
+
+findbar > .findbar-container,
+findbar > .close-icon{
+  border: 1px solid var(--chrome-content-separator-color);
+  border-width: 0 0 1px 0px;
+  background-color: var(--lwt-accent-color) !important;
+  background-image: linear-gradient(var(--toolbar-bgcolor),var(--toolbar-bgcolor)),var(--lwt-header-image,none);
+  pointer-events: auto;
+}
+
+findbar > .findbar-container{
+  border-bottom-right-radius: 4px;
+  border-right-width: 1px;
+  height: initial !important;
+  margin-inline: 0px !important;
+  overflow-inline: visible !important;
+}
+
+.findbar-find-status{
+  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+ 
+.findbar-closebutton{
+  margin: 0 !important;
+  border-radius: 0 !important;
+  padding: 5px !important;
+  width: initial !important;
+  order: -1;
+}
+.findbar-closebutton > image{ padding: 3px }
+.findbar-closebutton:hover > image{
+  background: var(--toolbarbutton-hover-background) !important;
+  border-radius: 4px
+}
+findbar > .findbar-container > hbox{ margin: 0 5px }
+ 
+findbar::after{
+  content:"";
+  display: flex;
+  flex-grow: 100;
+} 
+
+@media (-moz-bool-pref: "userchrome.floating-findbar-on-right.enabled"),
+       -moz-pref("userchrome.floating-findbar-on-right.enabled"){
+  findbar{
+    flex-direction: row-reverse;
+  }
+  findbar > .findbar-container{
+    flex-direction: row-reverse;
+    border-inline-width: 1px 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 4px;
+  }
+  /*
+  Move findbar so it isn't over the scrollbar
+  Delete if you want findbar to begin from right window edge
+  */
+  findbar{
+    margin-right: 16px;
+    border-right: 1px solid var(--chrome-content-separator-color);
+  }
+}
+
+/* Hide the Bookmark Text */
+#PlacesToolbarItems  > .bookmark-item > .toolbarbutton-text {
+ display: none !important
+} 
+
+/* Change bookmarks bar color to be the same as top toolbar */
+:root {
+    --firefoxcss-bookmarks-bg-color: transparent !important;
+}
+
+#personal-bookmarks toolbarbutton.bookmark-item {
+    background-color: var(--toolbar-bgcolor) !important;
+}
+
+#personal-bookmarks #PlacesToolbarItems > toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"], [open]):hover{
+    background-color: #393939 !important;
+}
+
+#personal-bookmarks #PlacesToolbarItems > toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"]):hover:active{
+    background-color: #555555 !important;
+}
+
+#personal-bookmarks #PlacesToolbarItems > toolbarbutton.bookmark-item[open="true"] {
+    background-color: #555555 !important;
+}
+
+#PersonalToolbar:not([customizing]) {
+    max-width: fit-content;
+    width:100vw;
+    align-self:center;
+}
+
+
+
+/* ------------------- URL DEBLOAT ------------------------ */
+
+#pageActionButton { display: none; }
+#pocket-button { display: none; }
+#urlbar-zoom-button { display: none; }
+#tracking-protection-icon-container { display: none !important; }
+#reader-mode-button{ display: none !important; }
+#star-button { display: none; }
+#star-button-box:hover { display: none; }
+#identity-box { margin-inline-end: 0 !important; }
+
+/* Go to arrow button at the end of the urlbar when searching */
+#urlbar-go-button { display: none; }
+
+/* remove container indicator from urlbar */
+#userContext-label, #userContext-indicator { display: none !important; }
+
+
+
+/* --------------UNIFIED EXTENSIONS BUTTON----------------- */
+
+#unified-extensions-button {
+  opacity: 0% !important;
+  padding-inline-end: 5px !important;
+  transition: 0.3s ease;
+}
+
+#unified-extensions-button:hover {
+   opacity: 100% !important;
+}
+
+/*  Clean and tight extensions menu */
+#unified-extensions-panel #unified-extensions-view {
+    width: 100% !important;  /*  For firefox v115.x */
+}
+
+#unified-extensions-view{
+    --uei-icon-size: 16px; /*  Change icon size */
+    --firefoxcss-number-of-extensions-in-a-row: 4; /*  Increase to the number of icons you want in one row */
+}
+
+#unified-extensions-view:before{
+  content: "Extensions";
+  text-align: left !important;
+  font-weight: bold !important;
+  padding-top: 9px !important;
+  padding-bottom: 4px !important;
+  padding-left: 14px !important;
+  }
+
+#unified-extensions-view .panel-header,
+#unified-extensions-view .panel-header .panel-header-icon,
+#unified-extensions-view .panel-header + toolbarseparator,
+#unified-extensions-view .panel-subview-body + toolbarseparator,
+#unified-extensions-view #unified-extensions-manage-extensions .toolbarbutton-icon,
+#unified-extensions-view .unified-extensions-item-menu-button.subviewbutton,
+#unified-extensions-view .unified-extensions-item-action-button .unified-extensions-item-contents{
+    visibility: collapse !important;
+}
+
+#unified-extensions-view #unified-extensions-manage-extensions .toolbarbutton-text {
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    }
+
+#unified-extensions-view .panel-subview-body {
+    padding: 2px !important;
+}
+
+#unified-extensions-view .unified-extensions-item .unified-extensions-item-icon, 
+#unified-extensions-view .unified-extensions-item .toolbarbutton-badge-stack {
+    margin-inline-end: 0px !important;
+}
+
+#unified-extensions-view #overflowed-extensions-list,
+#unified-extensions-view #unified-extensions-area,
+#unified-extensions-view .unified-extensions-list {
+    display: grid !important;
+    grid-template-columns: repeat(var(--firefoxcss-number-of-extensions-in-a-row),auto);
+    justify-items:left !important;
+    align-items:left !important;
+}
+
+#unified-extensions-view .unified-extensions-list .unified-extensions-item,
+#unified-extensions-view .unified-extensions-list{
+     max-width: max-content;
+     max-height: max-content;
+}
+
+#unified-extensions-view #unified-extensions-area {
+/*     padding-top: 0px !important; */
+/*     padding-bottom: 0px !important; */
+/*     border-bottom: 0px solid #aeaeae33 !important; */
+}
+
+#unified-extensions-view .unified-extensions-list {
+/*     border-top: 1px solid #aeaeae33 !important; */
+}
+
+#wrapper-edit-controls:is([place="palette"], 
+[place="panel"]) > #edit-controls, #wrapper-zoom-controls:is([place="palette"], 
+[place="panel"]) > #zoom-controls, :is(panelview, #widget-overflow-fixed-list) .toolbaritem-combined-buttons {
+  margin: 5px !important;
+}
+
+
+
+/* ---------------STYLE TAB TOOLBAR------------------------ */
+
+#titlebar {
+	--proton-tab-block-margin: 0px !important;
+	--tab-block-margin: 0px !important;
+}
+
+#TabsToolbar, .tabbrowser-tab {
+	max-height: var(--tab-min-height) !important;
+}
+
+tab {
+	font-family: var(--tab-font, monospace);
+	font-weight: bold;
+	border: none !important;
+	padding-top: 0 !important;
+}
+
+.tab-content {
+	padding: 0 0 0 var(--tab-inline-padding);
+}
+
+.tab-background {
+	margin-block: 0 !important;
+	min-height: var(--tab-min-height);
+	outline-offset: 0 !important;
+}
+
+tab.tabbrowser-tab[selected="true"] stack.tab-stack vbox.tab-background {
+	background: #FFFFFF28 !important;
+    border-radius: 0px !important;
+}
+
+/* safari style tab width */
+.tabbrowser-tab[fadein] {
+	max-width: 100vw !important;
+	border: none
+}
+
+#tabbrowser-tabs .tabbrowser-tab .tab-close-button { display: flex !important; }
+
+/* close button colors on hover */
+.tab-close-button:hover {
+  background-color: rgba(255,0,0,.7) !important;
+  fill: white !important;
+}
+
+.tabbrowser-tab:not([pinned]) .tab-close-button {
+  display: flex !important;
+}
+
+.tabbrowser-tab:not([pinned]) .tab-close-button {
+  max-width: 0 !important;
+}
+
+/* close button shown on hover */
+ .tabbrowser-tab:not([pinned]):hover .tab-close-button {
+  max-width: 24px !important;
+}
+
+.tabbrowser-tab {
+	/* remove border between tabs */
+	padding-inline: 0px !important;
+	/* reduce fade effect of tab text */
+	--tab-label-mask-size: 1em !important;
+	/* fix pinned tab behaviour on overflow */
+	overflow-clip-margin: 0px !important;
+}
+
+/* hide window controls */
+.titlebar-buttonbox-container { display: none; }
+
+/* remove titlebar spacers */
+.titlebar-spacer { display: none !important; }
+
+/* disable tab shadow */
+#tabbrowser-tabs:not([noshadowfortests]) .tab-background:is([selected], [multiselected]) {
+    box-shadow: none !important;
+}
+
+/* remove dark space between pinned tab and first non-pinned tab */
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]) >
+#tabbrowser-arrowscrollbox >
+.tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
+	margin-inline-start: 0px !important;
+}
+
+/* remove dropdown menu button which displays all tabs on overflow */
+#alltabs-button { display: none !important }
+
+/* fix displaying of pinned tabs on overflow */
+#tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {
+	height: var(--tab-min-height) !important;
+}
+
+#tabbrowser-tabs {
+	min-height: var(--tab-min-height) !important;
+}
+
+/* remove overflow scroll buttons */
+#scrollbutton-up, #scrollbutton-down { display: none !important; }
+
+#tabs-newtab-button {
+	display: flex !important;
+}
+
+/* hide private browsing indicator */
+#private-browsing-indicator-with-label {
+	display: none;
+}
+
+/* disable favicons in tab */
+/* .tab-icon-stack:not([pinned]) { display: none !important; } */
+
+
+/* Source file https://github.com/MrOtherGuy made available under Mozilla Public License v. 2.0 */
+
+#navigator-toolbox{
+  --uc-bm-padding: 4px; /* Vertical padding to be applied to bookmarks */
+  --uc-bm-height: calc(20px + 2 * var(--uc-bm-padding)); /* Might need to adjust if the toolbar has other buttons */
+  --uc-navbar-height: -15 /* navbar is main toolbar. Use negative value */
+}
+
+:root[uidensity="compact"] #navigator-toolbox{
+  --uc-navbar-height: -25px;
+}
+:root[uidensity="touch"] #navigator-toolbox{ --uc-bm-padding: 6px }
+
+:root[chromehidden~="directories"] #navigator-toolbox{
+  --uc-bm-height: 0px;
+}
+:root[chromehidden~="toolbar"] #navigator-toolbox{
+  --uc-navbar-height: 0px;
+}
+#navigator-toolbox,
+#sidebar-box,
+#sidebar-main,
+#sidebar-splitter,
+#tabbrowser-tabbox{
+  z-index: auto !important;
+}
+
+:root[sessionrestored] #nav-bar,
+:root[sessionrestored] #PersonalToolbar{
+  background-image: linear-gradient(var(--toolbar-bgcolor),var(--toolbar-bgcolor)), var(--lwt-additional-images,var(--toolbar-bgimage))  !important;
+  background-position: top,var(--lwt-background-alignment);
+  background-position-y: calc(0px - var(--tab-min-height) - 2*var(--tab-block-margin,0px));
+  background-repeat: repeat,var(--lwt-background-tiling);
+  transform: rotateX(90deg);
+  transform-origin: top;
+  transition: transform 135ms linear var(--uc-autohide-toolbar-delay) !important;
+  z-index: 2;
+}
+#PlacesToolbarItems > .bookmark-item,
+#OtherBookmarks,
+#PersonalToolbar > #import-button{
+  padding-block: var(--uc-bm-padding) !important;
+}
+:root[sessionrestored] #PersonalToolbar{
+  z-index: 1;
+  background-position-y: calc(0px - var(--tab-min-height) - 2*var(--tab-block-margin,0px) + var( --uc-navbar-height));
+}
+
+:root[lwtheme-image] #nav-bar,
+:root[lwtheme-image] #PersonalToolbar{
+  background-image: linear-gradient(var(--toolbar-bgcolor),var(--toolbar-bgcolor)),var(--lwt-header-image), var(--lwt-additional-images,var(--toolbar-bgimage)) !important;
+}
+
+#nav-bar[customizing],#PersonalToolbar[customizing]{ transform: none !important }
+
+#navigator-toolbox > #PersonalToolbar{
+  transform-origin: 0px var(--uc-navbar-height);
+  position: relative;
+}
+:root[sessionrestored] #urlbar[popover]{
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 135ms linear var(--uc-autohide-toolbar-delay), opacity 0ms calc(var(--uc-autohide-toolbar-delay) + 135ms);
+  transform-origin: 0px calc((var(--urlbar-container-height) - var(--urlbar-height)) / 2);
+  transform: rotateX(89.5deg);
+}
+#mainPopupSet:has(> [panelopen]:not(#ask-chat-shortcuts,#tab-preview-panel)) ~ toolbox #urlbar[popover],
+#navigator-toolbox:is(:hover,:focus-within) #urlbar[popover],
+#urlbar-container > #urlbar[popover]:is([focused],[open]){
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 100ms;
+  transform: rotateX(0deg);
+}
+
+:root[sessionrestored]:not([customizing]) #navigator-toolbox{
+  margin-bottom:  calc(-1px - var(--uc-bm-height) + var(--uc-navbar-height));
+}
+
+/* Make sure the bookmarks toolbar is never collapsed even if it is disabled */
+:root[sizemode="fullscreen"] #PersonalToolbar,
+#PersonalToolbar[collapsed="true"]{
+  min-height: initial !important;
+  max-height: initial !important;
+  visibility: hidden !important
+}
+#PersonalToolbar[collapsed="true"] #PlacesToolbarItems > *,
+:root[sizemode="fullscreen"] #PersonalToolbar #PlacesToolbarItems > *{
+  visibility: hidden !important;
+}
+
+/* If bookmarks toolbar is collapsed on startup, then no items are generated, and we need to set some height for it */
+#PlacesToolbarItems:empty{
+  height: var(--uc-bm-height);
+}
+
+/* Selected tab needs higher z-index now to "hide" the broder below it */
+.tabbrowser-tab[selected]{ z-index: 3 !important; }
+
+/* Show when cursor is over main menu popup - this requires :has selector support */
+#mainPopupSet:has(> [panelopen]:not(#ask-chat-shortcuts,#tab-preview-panel)) ~ toolbox > .browser-toolbar{
+  transition-delay: 100ms !important;
+  transform: rotateX(0);
+}
+
+/* SELECT TOOLBAR BEHAVIOR */
+/* Comment out or delete one of these to disable that behavior */
+
+/* Show when urlbar is focused */
+#nav-bar:focus-within + #PersonalToolbar,
+#navigator-toolbox > #nav-bar:focus-within{
+  transition-delay: 100ms !important;
+  transform: rotateX(0);
+}
+
+/* Show when cursor is over the toolbar area */
+#navigator-toolbox:hover > .browser-toolbar{
+  transition-delay: 100ms !important;
+  transform: rotateX(0);
+}
+
+/* This makes the tab notification box show immediately below tabs, otherwise it would break the layout */
+#navigator-toolbox > div{ display: contents }
+:where(#titlebar,#navigator-toolbox > #TabsToolbar,#navigator-toolbox > #toolbar-menubar,#tab-notification-deck,.global-notificationbox){
+  order: -1;
+}
+:root[BookmarksToolbarOverlapsBrowser] #navigator-toolbox{
+  margin-bottom: calc(-1px - var(--uc-bm-height) + var(--uc-navbar-height)) !important;
+  z-index: auto !important;
+}
+@media (-moz-bool-pref: "browser.fullscreen.autohide"){
+  :root[sizemode="fullscreen"] #navigator-toolbox[style*="margin-top"]{
+    margin-top: calc(1px - var(--tab-min-height) - 2 * var(--tab-block-margin)) !important;
+  }
+}
+
+/* Set the following pref to enable compatibility with multi-row_bookmarks.css */
+@media (-moz-bool-pref: "userchrome.autohide-bm-and-main-toolbars.multirow-bookmarks-compat.enabled"){
+  #navigator-toolbox{ margin-bottom: var(--uc-navbar-height) !important; }
+  #PersonalToolbar:not([customizing]){
+    min-height: 0 !important;
+    margin-bottom: 0;
+    height: 0;
+    overflow-y: visible !important;
+    z-index: 2;
+    padding-inline: 0 !important;
+  }
+  #personal-bookmarks{
+    background: inherit;
+    height: min-content;
+  }
+  #PlacesToolbarDropIndicatorHolder{
+    pointer-events: none !important;
+  }
+}
+
+
+/* Source file https://github.com/MrOtherGuy made available under Mozilla Public License v. 2.0 */
+
+/* This style creates a fake loading progress bar to the bottom of a tab as a replacement for normal loading throbber */
+
+@keyframes tab-loading-line-anim{ from{ background-size: 0% } to { background-size: 20% } }
+.tab-background::after{
+    background-size: 90%;
+}
+
+.tabbrowser-tab:is([busy],[bursting]) > .tab-stack > .tab-background::after{
+  content: "";
+  display: flex;
+  height: 2px;
+  background-color:transparent;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(currentColor,currentColor);
+  transition: background-size 80ms ease-out;
+}
+
+.tabbrowser-tab[busy]:not([progress],[bursting]) > .tab-stack > .tab-background::after{
+  animation: tab-loading-line-anim 80ms ease;
+  background-size: 20%;
+  opacity: 0.5;
+}
+
+.tabbrowser-tab[busy][progress] > .tab-stack > .tab-background::after{
+  transition-duration: 2000ms;
+}
+
+.tabbrowser-tab[bursting] > .tab-stack > .tab-background::after{
+  transition: background-size 80ms ease-out, opacity 80ms linear;
+  background-size: 100%;
+  opacity: 0;
+}
+
+.tab-throbber{ display: none !important; }
+.tab-icon-image[src]{ display: block !important; }
+
+/* -------------------- Media Icons -------------------- */
+
+/* Revert the audio icon style */
+
+/* Pinned Tabs */
+
+.tabbrowser-tab[pinned]:not([crashed])
+{
+    .tab-icon-overlay
+    {
+        background-color: transparent !important;
+        background-image: none !important;
+        fill: currentColor !important;
+        border-radius: 50px !important;
+        top: -5px !important;
+        inset-inline-end: -6px !important;
+		max-width: 85% !important;
+        height: 85% !important;
+
+        
+        &:hover
+        {
+            background-color: color-mix(in srgb, currentColor 15%, transparent) !important;
+        }
+        
+        &:hover:active
+        {
+            background-color: color-mix(in srgb, currentColor 30%, transparent) !important;
+        }
+    }
+        
+    &:where([soundplaying], [muted], [activemedia-blocked]) .tab-icon-stack > :not(.tab-icon-overlay)
+    {
+        mask-image: linear-gradient(to bottom, black, black), radial-gradient(circle at right top, black 8px, transparent 10px) !important;
+        mask-size: 16px 16px, 14px 18px !important;
+        mask-position: top center !important;
+        mask-repeat: no-repeat !important;
+        mask-composite: exclude !important;
+        mask-mode: alpha !important;
+            
+        :root:-moz-locale-dir(rtl) &
+        {
+            mask-image: linear-gradient(to bottom, black, black), radial-gradient(circle at left top, black 8px, transparent 9px) !important;
+        }
+    }
+}
+
+/* Regular Tabs */
+
+.tabbrowser-tab:not([pinned], [crashed])
+{
+    .tab-icon-overlay
+    {
+        background-color: color-mix(
+		in srgb,
+		currentColor 100%,
+		transparent) !important;
+        border-radius: 50px !important;
+        top: 0px !important;
+        inset-inline-end: 0px !important;
+        mask-image: var(--mask-overlay-background, none), var(--mask-overlay-image, none) !important;
+        mask-size: 12px 12px, 9px 9px !important;
+        mask-position: center center !important;
+        mask-repeat: no-repeat !important;
+        mask-mode: alpha !important;
+        
+        &:hover
+        {
+            --mask-overlay-background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.15));
+        }
+
+        &:hover:active
+        {
+            --mask-overlay-background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+        }
+    }
+    
+    &[soundplaying] .tab-icon-overlay
+    {
+        --mask-overlay-image: url("chrome://browser/skin/tabbrowser/tab-audio-playing-small.svg");
+    }
+
+    &[muted] .tab-icon-overlay
+    {
+        --mask-overlay-image: url("chrome://browser/skin/tabbrowser/tab-audio-muted-small.svg");
+    }
+
+    &[activemedia-blocked] .tab-icon-overlay
+    {
+        --mask-overlay-image: url("chrome://browser/skin/tabbrowser/tab-audio-blocked-small.svg");
+    }
+    
+    &:where([busy], [image], [sharing], [pictureinpicture]) .tab-icon-overlay
+    {
+        top: -6px !important;
+        inset-inline-end: -6px !important;
+    }
+    
+    &:where([soundplaying], [muted], [activemedia-blocked])
+    {
+        .tab-icon-stack > :not(.tab-icon-overlay)
+        {
+            mask-image: linear-gradient(to bottom, black, black), radial-gradient(circle at right top, black 8px, transparent 10px) !important;
+            mask-size: 16px 17px !important;
+            mask-position: center center !important;
+            mask-repeat: no-repeat !important;
+            mask-composite: exclude !important;
+            mask-mode: alpha !important;
+
+            :root:-moz-locale-dir(rtl) &
+            {
+                mask-image: linear-gradient(to bottom, black, black), radial-gradient(circle at left top, black 8px, transparent 9px) !important;
+            }
+        }
+
+        .tab-icon-overlay
+        {
+            display: revert !important;
+        }
+    }
+}
+
+.tabbrowser-tab:not([pinned])
+{
+    &[fadein]
+    {
+        min-width: var(--tab-min-width) !important;
+    }
+
+    .tab-icon-stack > *
+    {
+        margin-inline-end: 8px !important;
+    }
+    
+    .tab-audio-button
+    {
+        display: none !important;
+    }
+}
+
